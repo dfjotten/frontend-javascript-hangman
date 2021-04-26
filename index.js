@@ -1,23 +1,20 @@
 const { question } = require("readline-sync");
 const { displayWordSoFar, isGameWon, isGameLost, isSingleLetter } = require("./gamelogic");
 
-// Function to ask user for letter
-// function askForLetter() {
-//   let letter = question("Vul in een letter: ")
-//   return letter;
-// }
+// Known Bug list:
+// Game is won after correctly guessing first letter, why??
 
 function game(word, guesses) {
   console.log("Dit heb je tot nu toe geraden: ", guesses);
   console.log(displayWordSoFar(word,guesses));
 
-  if (isGameWon(word,guesses)) {
-    console.log("Gefeliciteerd, je hebt gewonnen!");
+  if (isGameLost(word,guesses)) {
+    console.log("Helaas, je hebt 7 letters fout geraden en het spel verloren");
     return;
   }
 
-  if (isGameLost(word,guesses)) {
-    console.log("Helaas, je hebt 7 letters fout geraden en het spel verloren");
+  if (isGameWon(word,guesses)) {
+    console.log("Gefeliciteerd, je hebt gewonnen!");
     return;
   }
 

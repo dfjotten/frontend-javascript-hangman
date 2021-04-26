@@ -26,24 +26,22 @@ function isGameWon(word, guesses) {
     }
     return true;
   }
-  //If work guessed correctly, win condition.
+  //Additional feat: If work guessed correctly, win condition. (?)
 }
 
 function isGameLost(word, guesses) {
   // Input wrong guesses thus far
-  for (let i = 0; i < word.length; i++) {
-    let wrongLetter = 0;
-    let gameLost = false;
-    if(!guesses.includes(word[i])) {
-      wrongLetter++;
+  let sum = 0;
+  for (let i = 0; i < guesses.length; i++) {
+
+    if (!word.includes(guesses[i])) {
+      sum++
     }
-    // If wrong guesses === 7, game is lost
-    if(wrongLetter === 7) {
-      return gameLost = true;
-    }
-    return gameLost = false;
   }
+  return sum >= 7;
 }
+
+
 
 function isSingleLetter(letter) {
   //set condition for letter being 1 length
